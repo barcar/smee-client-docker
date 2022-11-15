@@ -1,9 +1,10 @@
 version: "3.5"
 services:
-  smee:
+  smee-1: 
     build:
       context: .
-    container_name: smee
+    container_name: smee-1
+    command: ["-u", "${SMEE_PROXY_URL_1}", "-t", "${SMEE_TARGET_URL_1}", "-p", "$SMEE_WEB_PORT_1"]
     restart: unless-stopped
     network_mode: host
     stdin_open: true 
