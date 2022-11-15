@@ -1,0 +1,14 @@
+version: "3.5"
+services:
+  smee:
+    build:
+      context: .
+    container_name: smee
+    restart: unless-stopped
+    network_mode: host
+    stdin_open: true 
+    tty: true
+    environment:
+      - TZ=Europe/London
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
