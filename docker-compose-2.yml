@@ -1,0 +1,28 @@
+version: "3.5"
+services:
+  smee-1: 
+    build:
+      context: .
+    container_name: smee-1
+    command: ["-u", "${SMEE_PROXY_URL_1}", "-t", "${SMEE_TARGET_URL_1}", "-p", "$SMEE_WEB_PORT_1"]
+    restart: unless-stopped
+    network_mode: host
+    stdin_open: true 
+    tty: true
+    environment:
+      - TZ=Europe/London
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+  smee-2:
+    build:
+      context: .
+    container_name: smee-2
+    command: ["-u", "${SMEE_PROXY_URL_2}", "-t", "${SMEE_TARGET_URL_2}", "-p", "$SMEE_WEB_PORT_2"]
+    restart: unless-stopped
+    network_mode: host
+    stdin_open: true 
+    tty: true
+    environment:
+      - TZ=Europe/London
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
